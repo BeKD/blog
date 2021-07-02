@@ -1,0 +1,19 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    mode: HTML
+    cache: false
+  profiles:
+    active: dev
+  messages:
+    basename: i18n/messages
+
+comment.avatar: /images/avatar.png
+
+#pagehelper分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
