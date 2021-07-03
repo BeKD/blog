@@ -1,0 +1,41 @@
+2021-07-03 12:08:47.283  INFO 4784 --- [restartedMain] com.chen.BlogApplication                 : Starting BlogApplication on DREAM with PID 4784 (E:\Idea_Projects\blog\target\classes started by DREAM in E:\Idea_Projects\blog)
+2021-07-03 12:08:47.283 DEBUG 4784 --- [restartedMain] com.chen.BlogApplication                 : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2021-07-03 12:08:47.283  INFO 4784 --- [restartedMain] com.chen.BlogApplication                 : The following profiles are active: dev
+2021-07-03 12:08:47.323  INFO 4784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-07-03 12:08:47.323  INFO 4784 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-07-03 12:08:48.303  INFO 4784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-07-03 12:08:48.313  INFO 4784 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-03 12:08:48.313  INFO 4784 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-07-03 12:08:48.373  INFO 4784 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-03 12:08:48.373  INFO 4784 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1050 ms
+2021-07-03 12:08:48.943  INFO 4784 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-07-03 12:08:49.013  INFO 4784 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-03 12:08:49.273  INFO 4784 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-07-03 12:08:49.313  INFO 4784 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-03 12:08:49.323  INFO 4784 --- [restartedMain] com.chen.BlogApplication                 : Started BlogApplication in 2.413 seconds (JVM running for 3.485)
+2021-07-03 12:09:25.402  INFO 4784 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-03 12:09:25.402  INFO 4784 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-03 12:09:25.410  INFO 4784 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2021-07-03 12:09:25.426  INFO 4784 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.IndexController.index', args=[]}
+2021-07-03 12:09:25.430  INFO 4784 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Result : redirect:blog/findAllBlog.do
+2021-07-03 12:09:25.463  INFO 4784 --- [http-nio-8081-exec-3] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/blog/findAllBlog.do', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.BlogController.index', args=[1, 10, {}]}
+2021-07-03 12:09:25.479  INFO 4784 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-03 12:09:25.635  INFO 4784 --- [http-nio-8081-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-03 12:09:25.641 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listBlogs           : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.content as blog_content, b.first_picture as blog_first_picture, b.flag as blog_flag, b.views as blog_views, b.comment_count as blog_comment_count, b.appreciation as blog_appreciation, b.share_statement as blog_share_statement, b.commentabled as blog_commentabled, b.published as blog_published, b.recommend as blog_recommend, b.create_time as blog_create_time, b.update_time as blog_update_time, b.description as blog_description, t.id as type_id, t.name as type_name, t.article_count as type_article_count, ta.id as tag_id, ta.name as tag_name, ta.article_count as tag_article_count, u.nickname as user_nickname, u.avatar as user_avatar, u.email as user_email from myblog.t_blog b, myblog.t_type t, myblog.t_blog_tags bt, myblog.t_tag ta, myblog.t_user u where b.type_id = t.id and u.id = b.user_id and b.id = bt.blog_id and bt.tag_id = ta.id order by b.update_time desc limit ?, ?
+2021-07-03 12:09:25.656 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listBlogs           : ==> Parameters: 0(Integer), 10(Integer)
+2021-07-03 12:09:25.672 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listBlogs           : <==      Total: 4
+2021-07-03 12:09:25.680 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TypeDao.listTypeTop         : ==>  Preparing: select * from myblog.t_type order by article_count desc limit 0,?
+2021-07-03 12:09:25.680 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TypeDao.listTypeTop         : ==> Parameters: 6(Integer)
+2021-07-03 12:09:25.681 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TypeDao.listTypeTop         : <==      Total: 3
+2021-07-03 12:09:25.685 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TagDao.listTagTop           : ==>  Preparing: select * from myblog.t_tag order by article_count desc limit 0, ?
+2021-07-03 12:09:25.685 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TagDao.listTagTop           : ==> Parameters: 10(Integer)
+2021-07-03 12:09:25.686 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.TagDao.listTagTop           : <==      Total: 3
+2021-07-03 12:09:25.687 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listRecommendBlogs  : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.first_picture as blog_first_picture, b.views as blog_views, b.comment_count as blog_comment_count, b.update_time as blog_update_time, b.description as blog_description from myblog.t_blog b where b.recommend = true order by b.update_time desc limit 4;
+2021-07-03 12:09:25.687 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listRecommendBlogs  : ==> Parameters: 
+2021-07-03 12:09:25.689 DEBUG 4784 --- [http-nio-8081-exec-3] com.chen.dao.BlogDao.listRecommendBlogs  : <==      Total: 3
+2021-07-03 12:09:25.690  INFO 4784 --- [http-nio-8081-exec-3] com.chen.aspect.LogAspect                : Result : index
+2021-07-03 12:09:26.100  INFO 4784 --- [http-nio-8081-exec-10] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/blog/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.BlogController.newblogs', args=[{}]}
+2021-07-03 12:09:26.101 DEBUG 4784 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.first_picture as blog_first_picture, b.views as blog_views, b.comment_count as blog_comment_count, b.update_time as blog_update_time, b.description as blog_description from myblog.t_blog b order by b.update_time desc limit 3;
+2021-07-03 12:09:26.101 DEBUG 4784 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : ==> Parameters: 
+2021-07-03 12:09:26.104 DEBUG 4784 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : <==      Total: 3
+2021-07-03 12:09:26.104  INFO 4784 --- [http-nio-8081-exec-10] com.chen.aspect.LogAspect                : Result : index::newblogList
