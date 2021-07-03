@@ -39,3 +39,60 @@
 2021-07-03 12:09:26.101 DEBUG 4784 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : ==> Parameters: 
 2021-07-03 12:09:26.104 DEBUG 4784 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : <==      Total: 3
 2021-07-03 12:09:26.104  INFO 4784 --- [http-nio-8081-exec-10] com.chen.aspect.LogAspect                : Result : index::newblogList
+2021-07-03 12:22:11.913  INFO 10096 --- [restartedMain] com.chen.BlogApplication                 : Starting BlogApplication on DREAM with PID 10096 (E:\Idea_Projects\blog\target\classes started by DREAM in E:\Idea_Projects\blog)
+2021-07-03 12:22:11.913 DEBUG 10096 --- [restartedMain] com.chen.BlogApplication                 : Running with Spring Boot v2.3.2.RELEASE, Spring v5.2.8.RELEASE
+2021-07-03 12:22:11.913  INFO 10096 --- [restartedMain] com.chen.BlogApplication                 : The following profiles are active: dev
+2021-07-03 12:22:11.963  INFO 10096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2021-07-03 12:22:11.963  INFO 10096 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2021-07-03 12:22:13.113  INFO 10096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2021-07-03 12:22:13.123  INFO 10096 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2021-07-03 12:22:13.123  INFO 10096 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.37]
+2021-07-03 12:22:13.183  INFO 10096 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2021-07-03 12:22:13.183  INFO 10096 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1220 ms
+2021-07-03 12:22:13.743  INFO 10096 --- [restartedMain] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2021-07-03 12:22:13.813  INFO 10096 --- [restartedMain] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2021-07-03 12:22:14.073  INFO 10096 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2021-07-03 12:22:14.113  INFO 10096 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2021-07-03 12:22:14.113  INFO 10096 --- [restartedMain] com.chen.BlogApplication                 : Started BlogApplication in 2.642 seconds (JVM running for 3.652)
+2021-07-03 12:22:25.177  INFO 10096 --- [http-nio-8081-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2021-07-03 12:22:25.178  INFO 10096 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2021-07-03 12:22:25.188  INFO 10096 --- [http-nio-8081-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2021-07-03 12:22:25.204  INFO 10096 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.IndexController.index', args=[]}
+2021-07-03 12:22:25.208  INFO 10096 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Result : redirect:blog/findAllBlog.do
+2021-07-03 12:22:25.241  INFO 10096 --- [http-nio-8081-exec-2] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/blog/findAllBlog.do', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.BlogController.index', args=[1, 10, {}]}
+2021-07-03 12:22:25.258  INFO 10096 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2021-07-03 12:22:25.407  INFO 10096 --- [http-nio-8081-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2021-07-03 12:22:25.414 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listBlogs           : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.content as blog_content, b.first_picture as blog_first_picture, b.flag as blog_flag, b.views as blog_views, b.comment_count as blog_comment_count, b.appreciation as blog_appreciation, b.share_statement as blog_share_statement, b.commentabled as blog_commentabled, b.published as blog_published, b.recommend as blog_recommend, b.create_time as blog_create_time, b.update_time as blog_update_time, b.description as blog_description, t.id as type_id, t.name as type_name, t.article_count as type_article_count, ta.id as tag_id, ta.name as tag_name, ta.article_count as tag_article_count, u.nickname as user_nickname, u.avatar as user_avatar, u.email as user_email from myblog.t_blog b, myblog.t_type t, myblog.t_blog_tags bt, myblog.t_tag ta, myblog.t_user u where b.type_id = t.id and u.id = b.user_id and b.id = bt.blog_id and bt.tag_id = ta.id order by b.update_time desc limit ?, ?
+2021-07-03 12:22:25.428 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listBlogs           : ==> Parameters: 0(Integer), 10(Integer)
+2021-07-03 12:22:25.444 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listBlogs           : <==      Total: 4
+2021-07-03 12:22:25.452 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TypeDao.listTypeTop         : ==>  Preparing: select * from myblog.t_type order by article_count desc limit 0,?
+2021-07-03 12:22:25.452 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TypeDao.listTypeTop         : ==> Parameters: 6(Integer)
+2021-07-03 12:22:25.453 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TypeDao.listTypeTop         : <==      Total: 3
+2021-07-03 12:22:25.457 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TagDao.listTagTop           : ==>  Preparing: select * from myblog.t_tag order by article_count desc limit 0, ?
+2021-07-03 12:22:25.457 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TagDao.listTagTop           : ==> Parameters: 10(Integer)
+2021-07-03 12:22:25.458 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.TagDao.listTagTop           : <==      Total: 3
+2021-07-03 12:22:25.459 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listRecommendBlogs  : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.first_picture as blog_first_picture, b.views as blog_views, b.comment_count as blog_comment_count, b.update_time as blog_update_time, b.description as blog_description from myblog.t_blog b where b.recommend = true order by b.update_time desc limit 4;
+2021-07-03 12:22:25.459 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listRecommendBlogs  : ==> Parameters: 
+2021-07-03 12:22:25.461 DEBUG 10096 --- [http-nio-8081-exec-2] com.chen.dao.BlogDao.listRecommendBlogs  : <==      Total: 3
+2021-07-03 12:22:25.461  INFO 10096 --- [http-nio-8081-exec-2] com.chen.aspect.LogAspect                : Result : index
+2021-07-03 12:22:25.847  INFO 10096 --- [http-nio-8081-exec-9] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/blog/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.BlogController.newblogs', args=[{}]}
+2021-07-03 12:22:25.848 DEBUG 10096 --- [http-nio-8081-exec-9] com.chen.dao.BlogDao.listNewBlogs        : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.first_picture as blog_first_picture, b.views as blog_views, b.comment_count as blog_comment_count, b.update_time as blog_update_time, b.description as blog_description from myblog.t_blog b order by b.update_time desc limit 3;
+2021-07-03 12:22:25.849 DEBUG 10096 --- [http-nio-8081-exec-9] com.chen.dao.BlogDao.listNewBlogs        : ==> Parameters: 
+2021-07-03 12:22:25.852 DEBUG 10096 --- [http-nio-8081-exec-9] com.chen.dao.BlogDao.listNewBlogs        : <==      Total: 3
+2021-07-03 12:22:25.852  INFO 10096 --- [http-nio-8081-exec-9] com.chen.aspect.LogAspect                : Result : index::newblogList
+2021-07-03 12:22:29.002  INFO 10096 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/types/findAllBlog.do/-1', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.TypeController.getBlogsByTypeId', args=[-1, 1, 10, {}]}
+2021-07-03 12:22:29.006 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.getTypeTotal        : ==>  Preparing: select count(t.id) from myblog.t_type t
+2021-07-03 12:22:29.006 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.getTypeTotal        : ==> Parameters: 
+2021-07-03 12:22:29.008 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.getTypeTotal        : <==      Total: 1
+2021-07-03 12:22:29.008 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.listTypeTop         : ==>  Preparing: select * from myblog.t_type order by article_count desc limit 0,?
+2021-07-03 12:22:29.008 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.listTypeTop         : ==> Parameters: 3(Integer)
+2021-07-03 12:22:29.009 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.TypeDao.listTypeTop         : <==      Total: 3
+2021-07-03 12:22:29.010 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.BlogDao.listBlogsByTypeId   : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.content as blog_content, b.first_picture as blog_first_picture, b.flag as blog_flag, b.views as blog_views, b.comment_count as blog_comment_count, b.appreciation as blog_appreciation, b.share_statement as blog_share_statement, b.commentabled as blog_commentabled, b.published as blog_published, b.recommend as blog_recommend, b.create_time as blog_create_time, b.update_time as blog_update_time, b.description as blog_description, t.name as type_name, u.nickname as user_nickname, u.avatar as user_avatar from myblog.t_blog b, myblog.t_type t,myblog.t_user u where b.type_id = t.id and u.id = b.user_id and b.type_id = ? order by b.update_time desc
+2021-07-03 12:22:29.010 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.BlogDao.listBlogsByTypeId   : ==> Parameters: 2(Integer)
+2021-07-03 12:22:29.013 DEBUG 10096 --- [http-nio-8081-exec-1] com.chen.dao.BlogDao.listBlogsByTypeId   : <==      Total: 2
+2021-07-03 12:22:29.014  INFO 10096 --- [http-nio-8081-exec-1] com.chen.aspect.LogAspect                : Result : types
+2021-07-03 12:22:29.172  INFO 10096 --- [http-nio-8081-exec-10] com.chen.aspect.LogAspect                : Request : {url='http://localhost:8081/blog/footer/newblog', ip='0:0:0:0:0:0:0:1', classMethod='com.chen.controller.BlogController.newblogs', args=[{}]}
+2021-07-03 12:22:29.172 DEBUG 10096 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : ==>  Preparing: select b.id as blog_id, b.title as blog_title, b.first_picture as blog_first_picture, b.views as blog_views, b.comment_count as blog_comment_count, b.update_time as blog_update_time, b.description as blog_description from myblog.t_blog b order by b.update_time desc limit 3;
+2021-07-03 12:22:29.172 DEBUG 10096 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : ==> Parameters: 
+2021-07-03 12:22:29.174 DEBUG 10096 --- [http-nio-8081-exec-10] com.chen.dao.BlogDao.listNewBlogs        : <==      Total: 3
+2021-07-03 12:22:29.175  INFO 10096 --- [http-nio-8081-exec-10] com.chen.aspect.LogAspect                : Result : index::newblogList
