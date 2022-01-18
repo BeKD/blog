@@ -1,45 +1,37 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <!--包含Spring boot对logback日志的默认配置-->
-    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
-    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
 
-    <!-- 定义日志存储的路径，不要配置相对路径 -->
-    <property name="FILE_PATH" value="E:/Idea_Projects/blog/log/spring-log.%d{yyyy-MM-dd}.%i.log" />
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
 
-    <!--重写了Spring Boot框架 org/springframework/boot/logging/logback/file-appender.xml 配置-->
-    <appender name="TIME_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <property name="LOG_FILE" value="myLog" />
+    <property name="LOG_PATH" value="/log" />
+    <property name="LOG_PATTERN_CONSOLE" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} --> %msg%n" />
+    <property name="LOG_PATTERN_FILE" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} --> %msg%n" />
+
+    <!--- 设置控制台日志 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
-            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <pattern>${LOG_PATTERN_CONSOLE}</pattern>
         </encoder>
-
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${FILE_PATH}</fileNamePattern>
-            <!--保留历史日志7天的时间-->
-            <maxHistory>7</maxHistory>
-            <!--
-            Spring Boot默认情况下，日志文件10M时切分文件
-            -->
-            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
-                <maxFileSize>10MB</maxFileSize>
-            </timeBasedFileNamingAndTriggeringPolicy>
-
-        </rollingPolicy>
     </appender>
 
+    <!-- 设置日志文件 -->
+<!--    -->
+<!--    <appender name="fileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${LOG_PATTERN_FILE}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${LOG_PATH}/${LOG_FILE}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${LOG_PATH}/${LOG_FILE}-%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>7</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+    <!-- 设置日志级别，及需要记录日志的类 -->
     <root level="INFO">
-        <appender-ref ref="CONSOLE" />
-        <appender-ref ref="TIME_FILE" />
+        <appender-ref ref="consoleLog" />
+<!--        <appender-ref ref="fileLog" />-->
     </root>
 
 </configuration>
-        <!--
-            1、继承Spring boot logback设置（可以在appliaction.yml或者application.properties设置logging.*属性）
-            2、重写了默认配置，设置日志文件大小在100MB时，按日期切分日志，切分后目录：
-
-                blog.2017-08-01.0   80MB
-                blog.2017-08-01.1   10MB
-                blog.2017-08-02.0   56MB
-                blog.2017-08-03.0   53MB
-                ......
-        -->

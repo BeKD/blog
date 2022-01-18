@@ -16,9 +16,8 @@ server:
 
 logging:
   level:
-    root: warn
-    com.chen: info
-
+    root: off
+    com.chen: off
 
 
 
