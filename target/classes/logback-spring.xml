@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <property name="LOG_FILE" value="myLog" />
+    <property name="LOG_PATH" value="/log" />
+    <property name="LOG_PATTERN_CONSOLE" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} --> %msg%n" />
+    <property name="LOG_PATTERN_FILE" value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} --> %msg%n" />
+
+    <!--- 设置控制台日志 -->
+    <appender name="consoleLog" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN_CONSOLE}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 设置日志文件 -->
+<!--    -->
+<!--    <appender name="fileLog" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <encoder>-->
+<!--            <pattern>${LOG_PATTERN_FILE}</pattern>-->
+<!--        </encoder>-->
+<!--        <file>${LOG_PATH}/${LOG_FILE}.log</file>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>${LOG_PATH}/${LOG_FILE}-%d{yyyy-MM-dd}.log</fileNamePattern>-->
+<!--            <maxHistory>7</maxHistory>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+    <!-- 设置日志级别，及需要记录日志的类 -->
+    <root level="INFO">
+        <appender-ref ref="consoleLog" />
+<!--        <appender-ref ref="fileLog" />-->
+    </root>
+
+</configuration>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关于我</title>
+  <link rel="stylesheet" th:href="@{/css/semantic.min.css}" >
+  <link rel="stylesheet" th:href="@{/css/me.css}">
+</head>
+<body>
+
+  <!--导航-->
+  <nav th:replace="_fragments :: menu(5)" class="ui inverted attached segment m-padded-tb-mini m-shadow-small" >
+    <div class="ui container">
+      <div class="ui inverted secondary stackable menu">
+        <h2 class="ui teal header item">Blog</h2>
+        <a href="#" class=" m-item item m-mobile-hide"><i class="mini home icon"></i>首页</a>
+        <a href="#" class=" m-item item m-mobile-hide"><i class="mini idea icon"></i>分类</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini tags icon"></i>标签</a>
+        <a href="#" class="m-item item m-mobile-hide"><i class="mini clone icon"></i>归档</a>
+        <a href="#" class="active m-item item m-mobile-hide"><i class="mini info icon"></i>关于我</a>
+        <div class="right m-item item m-mobile-hide">
+          <div class="ui icon inverted transparent input m-margin-tb-tiny">
+            <input type="text" placeholder="Search....">
+            <i class="search link icon"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a href="#" class="ui menu toggle black icon button m-right-top m-mobile-show">
+      <i class="sidebar icon"></i>
+    </a>
+  </nav>
+
+  <!--中间内容-->
+  <div  class="m-container m-padded-tb-big animated fadeIn">
+    <div class="ui container">
+
+      <div class="ui stackable grid">
+        <div class="eleven wide column">
+          <div class="ui segment">
+            <img src="../static/images/me.jpg" th:src="@{/images/me.jpg}" alt="" class="ui rounded image">
+          </div>
+        </div>
+        <div class="five wide column">
+          <div class="ui top attached segment">
+            <div class="ui header">关于我</div>
+          </div>
+          <div class="ui attached segment">
+            <p class="m-text">江少——一位飘飘然的仙侠，游走在高山流水之间.</p>
+            <p class="m-text">热爱生活，本身就是一种勇敢.</p>
+          </div>
+          <div class="ui attached segment">
+            <div class="ui orange basic left pointing label">文学</div>
+            <div class="ui orange basic left pointing label">写作</div>
+            <div class="ui orange basic left pointing label">红楼</div>
+            <div class="ui orange basic left pointing label">社会</div>
+          </div>
+          <div class="ui attached segment">
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">水月洞天</div>
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">灵镜传奇</div>
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">八阵图</div>
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">把酒问青天</div>
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">红楼梦</div>
+            <div class="ui teal basic left pointing label m-margin-tb-tiny">...</div>
+          </div>
+          <div class="ui bottom attached segment">
+            <a href="#" class="ui circular icon button"><i class="github icon"></i></a>
+            <a href="#" class="ui wechat circular icon button"><i class="weixin icon"></i></a>
+            <a href="#" class="ui qq circular icon button" data-content="2639572857" data-position="bottom center"><i class="qq icon"></i></a>
+          </div>
+
+          <div class="ui wechat-qr flowing popup transition hidden">
+            <img th:src="@{/images/wechat.jpg}" alt="" class="ui rounded image" style="width: 110px">
+          </div>
+          </div>
+      </div>
+
+    </div>
+  </div>
+
+  <br>
+  <br>
+
+  <!--底部footer-->
+  <footer th:replace="_fragments :: footer" class="ui inverted vertical segment m-padded-tb-massive">
+
+    <div id="newblog-container">
+      <div th:fragment="newblogList" class="ui inverted link list" >
+        <a href="#" th:href="@{/blog/{id}(id=${blog.id})}" target="_blank" class="item m-text-thin" th:each="blog : ${newblogs}" th:text="${blog.title}">用户故事（User Story）</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <script th:src="@{/js/jquery.min.js}"></script>
+  <script th:src="@{/js/semantic.min.js}"></script>
+
+  <script>
+    $('.menu.toggle').click(function () {
+      $('.m-item').toggleClass('m-mobile-hide');
+    });
+
+    $('.wechat').popup({
+      popup : $('.wechat-qr'),
+      position: 'bottom center'
+    });
+    $('.qq').popup();
+
+  </script>
+</body>
+</html>
